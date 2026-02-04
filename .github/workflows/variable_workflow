@@ -1,0 +1,27 @@
+name: sample_workflow
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "movies" branch
+  push:
+    branches: [ "movies" ]
+  pull_request:
+    branches: [ "movies" ]
+
+env:
+  name: "Usman's"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:  
+  greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+ 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say Hello job
+        run: echo "$Greeting, from the $name account!"
