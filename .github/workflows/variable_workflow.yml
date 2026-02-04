@@ -2,7 +2,7 @@ name: variable_workflow
 
 # Controls when the workflow will run
 on:
-  workflow_disptach
+  workflow_dispatch:
 env:
   name: "usman's"
 
