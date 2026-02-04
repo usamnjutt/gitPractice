@@ -14,6 +14,5 @@ jobs:
       Greeting: Hello
  
     steps:
-      - uses: actions/checkout@v4
       - name: Say Hello job
         run: echo "$Greeting, from the $name account!"
