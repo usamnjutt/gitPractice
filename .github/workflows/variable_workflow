@@ -1,8 +1,7 @@
 name: sample_workflow
 
 # Controls when the workflow will run
-on:
-  workflow_dispatch
+
 env:
   name: "usman's"
 
