@@ -2,6 +2,12 @@ name: variable_workflow
 
 # Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "movies" branch
+  push:
+    branches: [ "movies" ]
+  pull_request:
+    branches: [ "movies" ]
+    
   workflow_dispatch:
 env:
   name: "usman's"
