@@ -6,7 +6,7 @@ on:
   push:
     branches: [ "movies" ]
     paths:
-      - '.github/workflows/variable_workflow'
+      - '.github/workflows/variable_workflow.yml'
   pull_request:
     branches: [ "movies" ]
     paths:
