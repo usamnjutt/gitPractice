@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
-  test-wsl:
+  updated-test-wsl:
     runs-on: self-hosted  # This uses YOUR WSL runner!
     
     steps:
