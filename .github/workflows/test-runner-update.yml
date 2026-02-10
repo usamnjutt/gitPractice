@@ -1,4 +1,4 @@
-name: Test WSL Runner
+name: Updated Test WSL Runner
 
 on:
   push:
