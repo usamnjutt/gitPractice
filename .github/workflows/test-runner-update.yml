@@ -2,7 +2,7 @@ name: Updated Test WSL Runner
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
       run: | 
         echo "Hello!!!"
         echo "From uname -a System"
-        echo "Today is $(day) and date is $(date)"
+        echo "Today is $(date +%A) and date is $(date)"
     
     - name: Create Success Flag
       run: |
