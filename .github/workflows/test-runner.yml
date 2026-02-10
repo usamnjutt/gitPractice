@@ -1,0 +1,66 @@
+name: Test WSL Runner
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  test-wsl:
+    runs-on: self-hosted  # This uses YOUR WSL runner!
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Welcome Message
+      run: |
+        echo "✅ SUCCESS! Your GitHub Runner is working!"
+        echo "=========================================="
+        echo "🎯 Runner executed on: $(date)"
+        echo "💻 Hostname: $(hostname)"
+        echo "📁 Working directory: $(pwd)"
+        echo ""
+        echo "🏆 CONGRATULATIONS! You've successfully set up:"
+        echo "   - GitHub Self-Hosted Runner"
+        echo "   - Running on WSL Ubuntu"
+        echo "   - Connected to your personal repo"
+    
+    - name: Show System Info
+      run: |
+        echo "🖥️  System Information:"
+        echo "----------------------"
+        uname -a
+        echo ""
+        echo "📊 Memory:"
+        free -h
+        echo ""
+        echo "💾 Disk Space:"
+        df -h
+    
+    - name: List Repository Files
+      run: |
+        echo "📁 Your Repository Files:"
+        echo "-------------------------"
+        ls -la
+        echo ""
+        echo "📄 File contents:"
+        [ -f file1 ] && echo "file1:" && head -5 file1
+        [ -f file3 ] && echo "file3:" && head -5 file3
+    
+    - name: Create Success Flag
+      run: |
+        echo "# 🎉 GitHub Runner Success Report" > runner-success.md
+        echo "" >> runner-success.md
+        echo "## Execution Details" >> runner-success.md
+        echo "- **Date**: $(date)" >> runner-success.md
+        echo "- **Runner**: $(hostname)" >> runner-success.md
+        echo "- **Repository**: $GITHUB_REPOSITORY" >> runner-success.md
+        echo "- **Status**: ✅ **RUNNING PERFECTLY**" >> runner-success.md
+        echo "" >> runner-success.md
+        echo "## Next Steps:" >> runner-success.md
+        echo "1. Try more complex scripts" >> runner-success.md
+        echo "2. Schedule automated tasks" >> runner-success.md
+        echo "3. Build CI/CD pipelines" >> runner-success.md
+        echo "" >> runner-success.md
+        cat runner-success.md
