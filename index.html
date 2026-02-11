@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Deployed Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1 { font-size: 2.5em; }
+        .success {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 SUCCESS!</h1>
+    <div class="success">
+        <h2>GitHub Runner Deployed This!</h2>
+        <p>This website was deployed automatically</p>
+        <p><strong>Deployment Time:</strong> <span id="time"></span></p>
+        <p><strong>Deployed By:</strong> Your WSL Runner</p>
+    </div>
+    <script>
+        document.getElementById('time').innerHTML = new Date().toString();
+    </script>
+</body>
+</html>

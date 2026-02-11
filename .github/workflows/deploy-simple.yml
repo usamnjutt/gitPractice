@@ -1,0 +1,37 @@
+name: Auto-Deploy Website
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'scripts/deploy-simple.sh'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+    - name: 📥 Download code from GitHub
+      uses: actions/checkout@v3
+    
+    - name: 📋 Show files being deployed
+      run: |
+        echo "Files changed in this push:"
+        ls -la index.html style.css 2>/dev/null || true
+    
+    - name: 🚀 Run deployment script
+      run: |
+        chmod +x scripts/deploy-simple.sh
+        ./scripts/deploy-simple.sh
+    
+    - name: ✅ Verify deployment
+      run: |
+        echo "Checking if website is live..."
+        if curl -s http://localhost/mywebsite/ | grep -q "SUCCESS"; then
+          echo "✅ Website is LIVE!"
+        else
+          echo "⚠️  Website check failed"
+        fi
