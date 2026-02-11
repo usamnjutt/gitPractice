@@ -1,0 +1,25 @@
+name: Deploy with Python Server
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Deploy files
+      run: |
+        chmod +x scripts/deploy-python.sh
+        ./scripts/deploy-python.sh
+    
+    - name: Show deployment info
+      run: |
+        echo "✅ Deployment complete!"
+        echo "📁 Files at: /var/www/mywebsite"
+        echo "🌐 View at: http://localhost:8000/"
